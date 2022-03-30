@@ -23,4 +23,4 @@ jobs:
           branch: gh-pages
           github_token: '${{ secrets.GITHUB_TOKEN  }}'
           source_folder: docs
-        if: success() && github.event == 'push'
+          
