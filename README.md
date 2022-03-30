@@ -1,3 +1,5 @@
+![Tests](https://github.com/sdidla/Hatch/actions/workflows/swift.yml/badge.svg)
+
 # Hatch
 
 Generate Swift using Swift.
@@ -25,13 +27,9 @@ Input:
 struct A1 {
 
     struct BC {
-
         struct C1 {}
-
         struct C2 {}
-
         struct C3 {}
-
     }
 
     struct BD {
