@@ -1,4 +1,4 @@
-![Tests](https://github.com/sdidla/Hatch/actions/workflows/swift.yml/badge.svg)
+![Build, Test](https://github.com/sdidla/Hatch/actions/workflows/main.yml/badge.svg)
 
 # Hatch
 
