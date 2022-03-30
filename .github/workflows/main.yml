@@ -1,4 +1,4 @@
-name: Run Test, Build Documentation
+name: Run Tests, Build Documentation
 
 on:
   push:
