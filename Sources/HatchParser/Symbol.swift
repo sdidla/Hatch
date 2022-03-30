@@ -13,20 +13,6 @@ public protocol InheritingSymbol {
     var inheritedTypes: [String] { get }
 }
 
-public extension Symbol {
-    /// Returns an array containing the symbol and all its descendants
-    func flattened() -> [Symbol] {
-        [self] + children.flattened()
-    }
-}
-
-public extension Array where Element == Symbol {
-    /// Returns an array of symbols including descendants
-    func flattened() -> [Symbol] {
-        flatMap { [$0] + $0.children.flattened() }
-    }
-}
-
 // MARK: - Concrete Symbols
 
 /// A swift protocol

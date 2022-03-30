@@ -1,5 +1,5 @@
 import XCTest
-@testable import HatchExtractor
+@testable import HatchParser
 
 final class SymbolVisitorTests: XCTestCase {
 
@@ -9,7 +9,7 @@ final class SymbolVisitorTests: XCTestCase {
         }
         """
 
-        let structs = try SymbolVisitor.makeSymbolTree(from: code)
+        let structs = try SymbolParser.parse(source: code)
             .compactMap { $0 as? Struct }
 
         XCTAssertEqual(structs.count, 1)
@@ -24,7 +24,7 @@ final class SymbolVisitorTests: XCTestCase {
         }
         """
 
-        let symbols = try SymbolVisitor.makeSymbolTree(from: code)
+        let symbols = try SymbolParser.parse(source: code)
             .flattened()
 
         let structs = symbols
@@ -42,7 +42,7 @@ final class SymbolVisitorTests: XCTestCase {
         }
         """
 
-        let structs = try SymbolVisitor.makeSymbolTree(from: code)
+        let structs = try SymbolParser.parse(source: code)
             .compactMap { $0 as? Struct }
 
         XCTAssertEqual(structs.count, 1)
@@ -55,7 +55,7 @@ final class SymbolVisitorTests: XCTestCase {
         }
         """
 
-        let structs = try SymbolVisitor.makeSymbolTree(from: code)
+        let structs = try SymbolParser.parse(source: code)
             .compactMap { $0 as? Struct }
 
         XCTAssertEqual(structs.count, 1)
@@ -69,7 +69,7 @@ final class SymbolVisitorTests: XCTestCase {
         }
         """
 
-        let classes = try SymbolVisitor.makeSymbolTree(from: code)
+        let classes = try SymbolParser.parse(source: code)
             .compactMap { $0 as? Class }
 
         XCTAssertEqual(classes.count, 1)
@@ -84,7 +84,7 @@ final class SymbolVisitorTests: XCTestCase {
         }
         """
 
-        let symbols = try SymbolVisitor.makeSymbolTree(from: code)
+        let symbols = try SymbolParser.parse(source: code)
             .flattened()
 
         let classes = symbols
@@ -102,7 +102,7 @@ final class SymbolVisitorTests: XCTestCase {
         }
         """
 
-        let classes = try SymbolVisitor.makeSymbolTree(from: code)
+        let classes = try SymbolParser.parse(source: code)
             .compactMap { $0 as? Class }
 
         XCTAssertEqual(classes.count, 1)
@@ -120,7 +120,7 @@ final class SymbolVisitorTests: XCTestCase {
         }
         """
 
-        let enums = try SymbolVisitor.makeSymbolTree(from: code)
+        let enums = try SymbolParser.parse(source: code)
             .compactMap { $0 as? Enum }
 
         let cases = enums.first?.children.flattened()
@@ -141,7 +141,7 @@ final class SymbolVisitorTests: XCTestCase {
         }
         """
 
-        let enums = try SymbolVisitor.makeSymbolTree(from: code)
+        let enums = try SymbolParser.parse(source: code)
             .compactMap { $0 as? Enum }
 
         let cases = enums.first?.children.flattened()
@@ -161,7 +161,7 @@ final class SymbolVisitorTests: XCTestCase {
         }
         """
 
-        let enums = try SymbolVisitor.makeSymbolTree(from: code)
+        let enums = try SymbolParser.parse(source: code)
             .compactMap { $0 as? Enum }
 
         XCTAssertEqual(enums.count, 1)
@@ -179,7 +179,7 @@ final class SymbolVisitorTests: XCTestCase {
         }
         """
 
-        let enums = try SymbolVisitor.makeSymbolTree(from: code)
+        let enums = try SymbolParser.parse(source: code)
             .flattened()
             .compactMap { $0 as? Enum }
 
@@ -196,7 +196,7 @@ final class SymbolVisitorTests: XCTestCase {
         }
         """
 
-        let protocols = try SymbolVisitor.makeSymbolTree(from: code)
+        let protocols = try SymbolParser.parse(source: code)
             .compactMap { $0 as? ProtocolType }
 
         XCTAssertEqual(protocols.count, 1)
@@ -208,7 +208,7 @@ final class SymbolVisitorTests: XCTestCase {
         protocol MyProtocol: Hashable, Error {}
         """
 
-        let protocols = try SymbolVisitor.makeSymbolTree(from: code)
+        let protocols = try SymbolParser.parse(source: code)
             .compactMap { $0 as? ProtocolType }
 
         XCTAssertEqual(protocols.count, 1)
@@ -221,7 +221,7 @@ final class SymbolVisitorTests: XCTestCase {
         typealias MyAlias = Int
         """
 
-        let aliases = try SymbolVisitor.makeSymbolTree(from: code)
+        let aliases = try SymbolParser.parse(source: code)
             .compactMap { $0 as? Typealias }
 
         XCTAssertEqual(aliases.count, 1)
@@ -234,7 +234,7 @@ final class SymbolVisitorTests: XCTestCase {
         typealias MyAlias = StringProtocol & View
         """
 
-        let aliases = try SymbolVisitor.makeSymbolTree(from: code)
+        let aliases = try SymbolParser.parse(source: code)
             .compactMap { $0 as? Typealias }
 
         XCTAssertEqual(aliases.count, 1)
@@ -249,7 +249,7 @@ final class SymbolVisitorTests: XCTestCase {
         }
         """
 
-        let aliases = try SymbolVisitor.makeSymbolTree(from: code)
+        let aliases = try SymbolParser.parse(source: code)
             .flattened()
             .compactMap { $0 as? Typealias }
 
@@ -264,7 +264,7 @@ final class SymbolVisitorTests: XCTestCase {
         }
         """
 
-        let extensions = try SymbolVisitor.makeSymbolTree(from: code)
+        let extensions = try SymbolParser.parse(source: code)
             .compactMap { $0 as? Extension }
 
         XCTAssertEqual(extensions.count, 1)

@@ -1,6 +1,6 @@
 import Foundation
+import HatchParser
 import HatchBuilder
-import HatchExtractor
 import SwiftSyntax
 
 @main
@@ -9,49 +9,29 @@ public struct ExampleApp {
 
         let source = """
 
-        // start scope
         struct A1 {
-
-            // start scope
             struct BC {
-
-                // start scope
-                struct C1 {
-                }
-                // end scope. retrieve previousscope. create node. add as child
-
-                // start scope
-                struct C2 {
-                }
-                // end scope. retrieve previousscope. create node. add as child
-
-                struct C3 {
-                }
-                // end scope. retrieve previousscope. create node. add as child
+                struct C1 {}
+                struct C2 {}
+                struct C3 {}
 
             }
-            // end scope. retrieve previousscope. create node. add as child
-
 
             struct BD {
                 struct D1 {}
                 struct D2 {}
             }
 
-            struct BX {
-            }
-
+            struct BX {}
         }
 
-        struct A2 {
-        }
+        struct A2 {}
 
-        enum MyEnum {
-        }
+        enum MyEnum {}
 
         """
 
-        let symbols = try SymbolVisitor.makeSymbolTree(from: source)
+        let symbols = try SymbolParser.parse(source: source)
             .flattened()
             .compactMap { $0 as? InheritingSymbol }
 
@@ -83,7 +63,7 @@ public struct ExampleApp {
 
 // MARK: - Custom Visitor
 
-class MyProjectVisitor: SymbolVisitor {
+class MyProjectVisitor: SymbolParser {
 
     override func visit(_ node: StructDeclSyntax) -> SyntaxVisitorContinueKind {
         startScope()

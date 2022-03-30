@@ -9,7 +9,7 @@ let package = Package(
     platforms: [.iOS(.v13), .macOS(.v10_15)],
     products: [
         .executable(name: "HatchExample", targets: ["HatchExample"]),
-        .library(name: "HatchExtractor", targets: ["HatchExtractor"]),
+        .library(name: "HatchParser", targets: ["HatchParser"]),
         .library(name: "HatchBuilder", targets: ["HatchBuilder"]),
     ],
     dependencies: [
@@ -19,31 +19,24 @@ let package = Package(
         .executableTarget(
             name: "HatchExample",
             dependencies: [
-                .target(name: "HatchExtractor"),
+                .target(name: "HatchParser"),
                 .target(name: "HatchBuilder")
             ]
         ),
-
         .target(
-            name: "HatchExtractor",
+            name: "HatchParser",
             dependencies: [
                 .product(name: "SwiftSyntax", package: "SwiftSyntax"),
                 .product(name: "SwiftSyntaxParser", package: "SwiftSyntax")
             ]
         ),
-        
         .target(
             name: "HatchBuilder"
         ),
 
         .testTarget(
-            name: "HatchExtractorTests",
-            dependencies: [
-                "HatchExtractor"
-            ],
-            resources: [
-                .copy("RootDirectoryMock")
-            ]
+            name: "HatchParserTests",
+            dependencies: ["HatchParser"]
         )
     ]
 )

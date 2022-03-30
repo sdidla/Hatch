@@ -1,8 +1,8 @@
 import SwiftSyntax
 import SwiftSyntaxParser
 
-/// A SyntaxVistor subclass that creates a symbol heiracrcy
-open class SymbolVisitor: SyntaxVisitor {
+/// A SyntaxVistor subclass that parses swift code into a hierarchical list of symbols
+open class SymbolParser: SyntaxVisitor {
 
     // MARK: - Private
 
@@ -11,7 +11,7 @@ open class SymbolVisitor: SyntaxVisitor {
     // MARK: - Public
 
     /// Parses `source` and returns a hierarchical list of symbols from a string
-    static public func makeSymbolTree(from source: String) throws -> [Symbol] {
+    static public func parse(source: String) throws -> [Symbol] {
         let visitor = Self()
         try visitor.walk(SyntaxParser.parse(source: source))
         return visitor.scope.symbols
