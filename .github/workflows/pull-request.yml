@@ -14,5 +14,13 @@ jobs:
     steps:
 
       - uses: actions/checkout@v3
+      
       - name: Run script
         run: ./.github/scripts/doc-gen.sh
+      
+      - uses: seanmiddleditch/gha-publish-to-git@master
+        with:
+          branch: gh-pages
+          github_token: '${{ secrets.GITHUB_TOKEN  }}'
+          source_folder: docs
+        if: success() && github.event == 'push'
