@@ -2,10 +2,8 @@ name: Test Gen Doc
 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches-ignore: [ 'gh-pages' ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
