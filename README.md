@@ -4,9 +4,9 @@
 
 Generate Swift using Swift.
 
-This package contains two libraries
-- `HatchParser`: Parses swift code into a symbol tree using [SwiftSyntax 0.50600.1](https://github.com/apple/swift-syntax)
-- `HatchBuilder`: Provides a tiny `resultBuidler` based API to generate `.swift` files
+This package contains two modules:
+- `HatchParser` Provides a simple, extensible parser to to get a hierarchical list of symbols from swift code using [SwiftSyntax](https://github.com/apple/swift-syntax)
+- `HatchBuilder` Provides a string concatenating `resultBuidler` so expressions can be interspersed with strings 
 
 ### HatchParser
 
@@ -103,11 +103,11 @@ By subclassing `SymbolParser`, and overriding `SyntaxVisitor` methods, you can g
 The following listing shows an example of adding generic where clause support:
 
 ```swift
-class MySpecialVisitor: SymbolParser {
+class MyVisitor: SymbolParser {
     override func visitPost(_ node: StructDeclSyntax) {
         if let genericWhereClause = node.genericWhereClause {
             endScopeAndAddSymbol { children in
-                MySpecialStruct(
+                StructWithGenerics(
                     name: node.identifier.text,
                     children: children,
                     genericWhereClause: genericWhereClause.description
@@ -119,7 +119,7 @@ class MySpecialVisitor: SymbolParser {
     }
 }
 
-struct MySpecialStruct: Symbol {
+struct StructWithGenerics: Symbol {
     let name: String
     let children: [Symbol]
     let genericWhereClause: String
@@ -132,12 +132,12 @@ import HatchBuilder
 
 @CodeBuilder var myFile: String {
     """
-    switch signal {
+    switch myVar {
     """
 
-    for signalName in signalNames {
+    for name in symbolNames {
     """
-        case \(signalName)
+        case \(name)
     """
     }
 
