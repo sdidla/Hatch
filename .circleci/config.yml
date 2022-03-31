@@ -1,0 +1,16 @@
+version: 2.1
+
+jobs:
+  test:
+    macos:
+      xcode: 13.3.0
+
+    steps:
+      - checkout
+      - run: swift test -v
+
+workflows:
+  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+    # Inside the workflow, you define the jobs you want to run.
+    jobs:
+      - test
