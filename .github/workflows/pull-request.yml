@@ -18,10 +18,10 @@ jobs:
       - name: Run script
         run: ./.github/scripts/doc-gen.sh
       
-      - uses: seanmiddleditch/gha-publish-to-git@master
-        with:
-          branch: gh-pages
-          github_token: '${{ secrets.GITHUB_TOKEN  }}'
-          github_pat: '${{ secrets.GH_PAT }}'
-          source_folder: docs
-          
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: gh-pages
+          FOLDER: docs
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
