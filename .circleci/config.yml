@@ -15,7 +15,8 @@ jobs:
     steps:
       - checkout
       - run: swift test -v
-      - commands: ./gen-doc.sh
+      - run: ./gen-doc.sh
+
 
 
 workflows:
