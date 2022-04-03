@@ -12,3 +12,8 @@ swift package \
     --output-path "docs"
 
 ls -laR
+
+npm install -g --silent gh-pages@2.0.1
+git config user.email "ci@circleci.com"
+git config user.name "ci"
+

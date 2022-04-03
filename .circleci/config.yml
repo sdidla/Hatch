@@ -1,6 +1,8 @@
 version: 2.1
 
 jobs:
+
+
   test-and-document:
     macos:
       xcode: 13.3.0
@@ -8,6 +10,9 @@ jobs:
     steps:
       - checkout
       - run: swift test -v
+
+
+
   test:
     macos: 
       xcode: 13.3.0
@@ -15,7 +20,7 @@ jobs:
     steps:
       - checkout
       - run: swift test -v
-      - run: ./gen-doc.sh
+      - run: .circleci/generate-documentation.sh
 
 
 
