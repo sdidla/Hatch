@@ -27,7 +27,7 @@ jobs:
           command: |
                     mkdir -p "rendered/docs/HatchParser"
                     swift package \
-                        --allow-writing-to-directory "$rendered/docs/HatchParser" \
+                        --allow-writing-to-directory "rendered/docs/HatchParser" \
                         generate-documentation \
                         --target HatchParser \
                         --disable-indexing \
