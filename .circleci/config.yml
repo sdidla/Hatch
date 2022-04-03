@@ -34,9 +34,7 @@ jobs:
                         --transform-for-static-hosting \
                         --hosting-base-path "Hatch/docs" \
                         --output-path "docs"
-                    ls -laR
-                    printenv
-                    
+                                            
       - run:
             name: Install dependencies
             command: |
