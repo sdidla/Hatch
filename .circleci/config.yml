@@ -33,7 +33,9 @@ jobs:
                         --disable-indexing \
                         --transform-for-static-hosting \
                         --hosting-base-path "/Hatch/docs/HatchParser/" \
-                        --output-path "rendered/docs/HatchParser"                               
+                        --output-path "rendered/docs/HatchParser"
+                    cp README.md rendered/.
+                    ls -laR                               
       - run:
             name: Install dependencies
             command: |
