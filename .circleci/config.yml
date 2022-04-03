@@ -19,9 +19,32 @@ jobs:
 
     steps:
       - checkout
-      - run: swift test -v
-      - run: .circleci/generate-documentation.sh
-
+      - run: 
+          name: Run unit tests
+          command: swift test -v
+      - run: 
+          name: Generate Documentation 
+          command: |
+                    mkdir -p "docs"
+                    swift package \
+                        --allow-writing-to-directory "docs" \
+                        generate-documentation \
+                        --target HatchParser \
+                        --disable-indexing \
+                        --transform-for-static-hosting \
+                        --hosting-base-path "Hatch/docs" \
+                        --output-path "docs"
+                    ls -laR
+                    
+      - run:
+            name: Install dependencies
+            command: |
+                    npm install -g --silent gh-pages@2.0.1
+                    git config user.email "ci@circleci.com"
+                    git config user.name "ci"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dotfiles --message "[skip ci] Updates" --dist docs
 
 
 workflows:
