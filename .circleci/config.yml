@@ -25,14 +25,15 @@ jobs:
       - run: 
           name: Generate documentation 
           command: |
-                    mkdir -p "rendered/docs/Hatch"
+                    mkdir -p "rendered/docs/HatchParser"
                     swift package \
                         generate-documentation \
+                        --allow-writing-to-directory "$rendered/docs/HatchParser" \
                         --target HatchParser \
                         --disable-indexing \
                         --transform-for-static-hosting \
-                        --hosting-base-path "Hatch/docs/Hatch" \
-                        --output-path "rendered/docs/Hatch"                               
+                        --hosting-base-path "Hatch/docs/HatchParser" \
+                        --output-path "rendered/docs/HatchParser"                               
       - run:
             name: Install dependencies
             command: |
