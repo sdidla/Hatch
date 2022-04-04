@@ -3,17 +3,19 @@ version: 2.1
 jobs:
 
 
-  test-and-document:
+  test:
     macos:
       xcode: 13.3.0
 
     steps:
       - checkout
-      - run: swift test -v
+      - run: 
+          name: Run unit tests
+          command: swift test -v
 
 
 
-  test:
+  test-and-document:
     macos: 
       xcode: 13.3.0
 
@@ -32,7 +34,7 @@ jobs:
                         --target HatchParser \
                         --disable-indexing \
                         --transform-for-static-hosting \
-                        --hosting-base-path "/Hatch/docs/HatchParser" \
+                        --hosting-base-path "/Hatch/docs/HatchParser/" \
                         --output-path "rendered/docs/HatchParser"
       - run:
             name: Install dependencies
@@ -64,4 +66,5 @@ workflows:
             branches:
               ignore: 
                 - main
+                - gh-pages
 
