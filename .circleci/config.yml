@@ -1,0 +1,70 @@
+version: 2.1
+
+jobs:
+
+
+  test:
+    macos:
+      xcode: 13.3.0
+
+    steps:
+      - checkout
+      - run: 
+          name: Run unit tests
+          command: swift test -v
+
+
+
+  test-and-document:
+    macos: 
+      xcode: 13.3.0
+
+    steps:
+      - checkout
+      - run: 
+          name: Run unit tests
+          command: swift test -v
+      - run: 
+          name: Generate documentation 
+          command: |
+                    mkdir -p "rendered/docs/HatchParser"
+                    swift package \
+                        --allow-writing-to-directory "rendered/docs/HatchParser" \
+                        generate-documentation \
+                        --target HatchParser \
+                        --disable-indexing \
+                        --transform-for-static-hosting \
+                        --hosting-base-path "/Hatch/docs/HatchParser/" \
+                        --output-path "rendered/docs/HatchParser"
+      - run:
+            name: Install dependencies
+            command: |
+                    npm install -g --silent gh-pages@2.0.1
+                    git config user.email "ci@circleci.com"
+                    git config user.name "ci"
+      - add_ssh_keys:
+            fingerprints: 
+                - "62:97:3d:bb:32:06:71:05:a5:45:9b:4a:f3:32:fb:19"
+      - run:
+          name: Deploy to gh-pages branch
+          command: gh-pages --dotfiles --message "[skip ci] Updates" --dist rendered
+
+
+workflows:
+  "Run Tests, Generate Documentation": 
+    jobs:
+      - test-and-document:
+          filters:
+            branches:
+              only: 
+                - main
+
+  "Pull Request Tests": 
+    jobs:
+      - test:
+          filters:
+            branches:
+              ignore: 
+                - main
+                - gh-pages
+
