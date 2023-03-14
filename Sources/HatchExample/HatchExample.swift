@@ -49,7 +49,7 @@ public struct ExampleApp {
 
         dump(allSymbols)
 
-        @CodeBuilder var output: String {
+        @StringBuilder var output: String {
             """
             let a = 10
 

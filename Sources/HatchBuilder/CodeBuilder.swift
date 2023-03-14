@@ -1,6 +1,6 @@
 import Foundation
 
-@resultBuilder public struct CodeBuilder {
+@resultBuilder public struct StringBuilder {
     static public func buildBlock(_ components: String...) -> String {
         return components.joined(separator: "\n")
     }

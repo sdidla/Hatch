@@ -1,13 +1,13 @@
 # ``HatchBuilder``
 
-HatchBuilder provides an extremely simple string concatenating `resultBuilder` called ``CodeBuilder``
+HatchBuilder provides an extremely simple string concatenating `resultBuilder` called ``StringBuilder``
 
 ## Usage
 
 ```swift
 import HatchBuilder
 
-@CodeBuilder var myFile: String {
+@StringBuilder var myFile: String {
     """
     switch symbol {
     """
