@@ -5,7 +5,7 @@ import PackageDescription
 import Foundation
 
 #if swift(>=5.7)
-let swiftSyntax = Package.Dependency.package(name: "SwiftSyntax", url: "https://github.com/apple/swift-syntax.git", .exact("0.50700.0"))
+let swiftSyntax = Package.Dependency.package(name: "SwiftSyntax", url: "https://github.com/apple/swift-syntax.git", .exact("0.50700.1"))
 #elseif swift(>=5.6)
 let swiftSyntax = Package.Dependency.package(name: "SwiftSyntax", url: "https://github.com/apple/swift-syntax.git", .exact("0.50600.1"))
 #endif
