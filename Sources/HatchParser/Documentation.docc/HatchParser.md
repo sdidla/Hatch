@@ -9,8 +9,8 @@ Extracting symbols from a string or contents of a file using ``SymbolParser/pars
 ```swift
 import HatchParser
 
-let path = "~/Repositories/myProject" as NSString
-let directoryURL = URL(fileURLWithPath: path.expandingTildeInPath)
+let path = "~/Repositories/myProject"
+let directoryURL = URL(fileURLWithPath: path)
 
 let allSymbols = try FileManager.default
     .enumerator(at: directoryURL, includingPropertiesForKeys: nil)?
