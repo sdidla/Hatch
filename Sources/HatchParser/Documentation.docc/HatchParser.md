@@ -22,7 +22,7 @@ let allSymbols = try FileManager.default
 dump(allSymbols)
 ```
 
-You can use swift standard library methods to `filter`, `map`, `compactMap` etc. `HatchParser` provides an additional method on a collection of symbols or a ``Symbol`` called ``Symbol/flattened()`` that returns a flat array of symbols derived from the symbol tree while preserving the subtree
+You can use swift standard library methods to `filter`, `map`, `compactMap` etc. `HatchParser` provides an additional method on a collection of symbols called ``Symbol/flattened()`` that returns a flat array of symbols derived from the symbol tree while preserving the subtree
 
 For example, to extract all the enum case elements from a specific enum, you can do:
 

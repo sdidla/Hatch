@@ -4,12 +4,6 @@
 import PackageDescription
 import Foundation
 
-#if swift(>=5.7)
-let swiftSyntax = Package.Dependency.package(name: "SwiftSyntax", url: "https://github.com/apple/swift-syntax.git", .upToNextMinor(from: "0.50700.1"))
-#elseif swift(>=5.6)
-let swiftSyntax = Package.Dependency.package(name: "SwiftSyntax", url: "https://github.com/apple/swift-syntax.git", .upToNextMinor(from: "0.50600.1"))
-#endif
-
 let package = Package(
     name: "Hatch",
     platforms: [.iOS(.v13), .macOS(.v10_15)],
@@ -18,7 +12,9 @@ let package = Package(
         .library(name: "HatchParser", targets: ["HatchParser"]),
         .library(name: "HatchBuilder", targets: ["HatchBuilder"]),
     ],
-    dependencies: [swiftSyntax],
+    dependencies: [
+        .package(name: "SwiftSyntax", url: "https://github.com/apple/swift-syntax.git", .upToNextMinor(from: "508.0.0"))
+    ],
     targets: [
         .executableTarget(
             name: "HatchExample",

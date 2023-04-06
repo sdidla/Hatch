@@ -31,17 +31,6 @@ indirect enum Scope {
         }
     }
 
-    /// Adds the symbol to the current scope.
-    mutating func addSymbol(_ symbol: Symbol) {
-        switch self {
-        case .root(symbols: let symbols):
-            self = .root(symbols: symbols + [symbol])
-
-        case .nested(parent: let parent, symbols: let symbols):
-            self = .nested(parent: parent, symbols: symbols + [symbol])
-        }
-    }
-
     /// Symbols at current scope
     var symbols: [Symbol] {
         switch self {

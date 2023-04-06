@@ -18,8 +18,8 @@ open class SymbolParser: SyntaxVisitor {
     }
 
     /// Designated initializer
-    required public override init() {
-        super.init()
+    required public init() {
+        super.init(viewMode: .sourceAccurate)
     }
 
     /// Starts a new scope which can contain zero or more nested symbols
@@ -34,11 +34,6 @@ open class SymbolParser: SyntaxVisitor {
     /// Call in `visitPost(_ node:)` methods
     public func endScopeAndAddSymbol(makeSymbolWithChildrenInScope: (_ children: [Symbol]) -> Symbol) {
         scope.end(makeSymbolWithChildrenInScope: makeSymbolWithChildrenInScope)
-    }
-
-    /// Add a symbol to the current scope
-    public func addSymbolToCurrentScope(_ symbol: Symbol) {
-        scope.addSymbol(symbol)
     }
 
     // MARK: - SwiftSyntax overridden methods
@@ -130,7 +125,7 @@ open class SymbolParser: SyntaxVisitor {
         endScopeAndAddSymbol { children in
             Typealias(
                 name: node.identifier.text,
-                existingType: node.initializer?.value.withoutTrivia().description ?? ""
+                existingType: node.initializer.value.withoutTrivia().description
             )
         }
     }
