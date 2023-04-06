@@ -15,7 +15,7 @@ This package contains two modules:
    
 ## Releases
 
-Hatch versions correspond to releases of [SwiftSyntax](https://github.com/apple/swift-syntax)
+Hatch [releases](https://github.com/sdidla/Hatch/releases/) correspond to releases of [SwiftSyntax](https://github.com/apple/swift-syntax)
 
 ## Example
 
