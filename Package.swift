@@ -13,7 +13,7 @@ let package = Package(
         .library(name: "HatchBuilder", targets: ["HatchBuilder"]),
     ],
     dependencies: [
-        .package(name: "SwiftSyntax", url: "https://github.com/apple/swift-syntax.git", .upToNextMinor(from: "508.0.0"))
+        .package(name: "SwiftSyntax", url: "https://github.com/apple/swift-syntax.git", from: "508.0.0")
     ],
     targets: [
         .executableTarget(
