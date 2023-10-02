@@ -13,7 +13,7 @@ let package = Package(
         .library(name: "HatchBuilder", targets: ["HatchBuilder"]),
     ],
     dependencies: [
-        .package(name: "SwiftSyntax", url: "https://github.com/apple/swift-syntax.git", from: "508.0.0")
+        .package(name: "swift-syntax", url: "https://github.com/apple/swift-syntax.git", from: "509.0.0")
     ],
     targets: [
         .executableTarget(
@@ -26,8 +26,8 @@ let package = Package(
         .target(
             name: "HatchParser",
             dependencies: [
-                .product(name: "SwiftSyntax", package: "SwiftSyntax"),
-                .product(name: "SwiftSyntaxParser", package: "SwiftSyntax")
+                .product(name: "SwiftSyntax", package: "swift-syntax"),
+                .product(name: "SwiftParser", package: "swift-syntax")
             ]
         ),
         .target(
@@ -41,11 +41,9 @@ let package = Package(
     ]
 )
 
-#if swift(>=5.6)
 if ProcessInfo.processInfo.environment["CI"] == "true" {
     package.dependencies += [
         .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
     ]
 }
-#endif
 
