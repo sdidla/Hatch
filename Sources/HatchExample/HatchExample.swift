@@ -51,21 +51,22 @@ public struct ExampleApp {
 
         @StringBuilder var output: String {
             """
+
             let a = 10
 
-            print("for start")
+            print("begin printing symbol names")
             """
 
 
             for t in symbols.map(\.name) {
             """
-                print(\(t))
+            print(\(t))
             """
             }
 
             """
-            print("for done")
-            end
+            print("end printing symbol names")
+
             """
         }
 
