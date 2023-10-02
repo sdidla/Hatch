@@ -17,7 +17,7 @@ let allSymbols = try FileManager.default
     .compactMap { $0 as? URL }
     .filter { $0.hasDirectoryPath == false }
     .filter { $0.pathExtension == "swift" }
-    .flatMap { try SymbolParser.parse(source: String(contentsOf: $0)) }
+    .flatMap { SymbolParser.parse(source: String(contentsOf: $0)) }
 
 dump(allSymbols)
 ```
