@@ -1,5 +1,5 @@
 import SwiftSyntax
-import SwiftSyntaxParser
+import SwiftParser
 
 /// A SyntaxVistor subclass that parses swift code into a hierarchical list of symbols
 open class SymbolParser: SyntaxVisitor {
@@ -11,9 +11,9 @@ open class SymbolParser: SyntaxVisitor {
     // MARK: - Public
 
     /// Parses `source` and returns a hierarchical list of symbols from a string
-    static public func parse(source: String) throws -> [Symbol] {
+    static public func parse(source: String) -> [Symbol] {
         let visitor = Self()
-        try visitor.walk(SyntaxParser.parse(source: source))
+        visitor.walk(Parser.parse(source: source))
         return visitor.scope.symbols
     }
 
@@ -45,7 +45,7 @@ open class SymbolParser: SyntaxVisitor {
     open override func visitPost(_ node: ClassDeclSyntax) {
         endScopeAndAddSymbol { children in
             Class(
-                name: node.identifier.text,
+                name: node.name.text,
                 children: children,
                 inheritedTypes: node.inheritanceClause?.types ?? []
             )
@@ -59,7 +59,7 @@ open class SymbolParser: SyntaxVisitor {
     open override func visitPost(_ node: ProtocolDeclSyntax) {
         endScopeAndAddSymbol { children in
             Protocol(
-                name: node.identifier.text,
+                name: node.name.text,
                 children: children,
                 inheritedTypes: node.inheritanceClause?.types ?? []
             )
@@ -73,7 +73,7 @@ open class SymbolParser: SyntaxVisitor {
     open override func visitPost(_ node: StructDeclSyntax) {
         endScopeAndAddSymbol { children in
             Struct(
-                name: node.identifier.text,
+                name: node.name.text,
                 children: children,
                 inheritedTypes: node.inheritanceClause?.types ?? []
             )
@@ -87,7 +87,7 @@ open class SymbolParser: SyntaxVisitor {
     open override func visitPost(_ node: EnumDeclSyntax) {
         endScopeAndAddSymbol { children in
             Enum(
-                name: node.identifier.text,
+                name: node.name.text,
                 children: children,
                 inheritedTypes: node.inheritanceClause?.types ?? []
             )
@@ -111,21 +111,21 @@ open class SymbolParser: SyntaxVisitor {
     open override func visitPost(_ node: EnumCaseElementSyntax) {
         endScopeAndAddSymbol { children in
             EnumCaseElement(
-                name: node.identifier.text,
+                name: node.name.text,
                 children: children
             )
         }
     }
 
-    open override func visit(_ node: TypealiasDeclSyntax) -> SyntaxVisitorContinueKind {
+    open override func visit(_ node: TypeAliasDeclSyntax) -> SyntaxVisitorContinueKind {
         startScope()
     }
 
-    open override func visitPost(_ node: TypealiasDeclSyntax) {
+    open override func visitPost(_ node: TypeAliasDeclSyntax) {
         endScopeAndAddSymbol { children in
             Typealias(
-                name: node.identifier.text,
-                existingType: node.initializer.value.withoutTrivia().description
+                name: node.name.text,
+                existingType: node.initializer.value.trimmedDescription
             )
         }
     }
@@ -137,7 +137,7 @@ open class SymbolParser: SyntaxVisitor {
     open override func visitPost(_ node: ExtensionDeclSyntax) {
         endScopeAndAddSymbol { children in
             Extension(
-                name: node.extendedType.withoutTrivia().description,
+                name: node.extendedType.trimmedDescription,
                 children: children,
                 inheritedTypes: node.inheritanceClause?.types ?? []
             )
@@ -145,10 +145,10 @@ open class SymbolParser: SyntaxVisitor {
     }
 }
 
-public extension TypeInheritanceClauseSyntax {
+public extension InheritanceClauseSyntax {
     var types: [String] {
-        inheritedTypeCollection.map {
-            $0.typeName.withoutTrivia().description
+        inheritedTypes.map {
+            $0.type.trimmedDescription
         }
     }
 }

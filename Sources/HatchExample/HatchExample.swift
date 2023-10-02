@@ -31,7 +31,7 @@ public struct ExampleApp {
 
         """
 
-        let symbols = try SymbolParser.parse(source: source)
+        let symbols = SymbolParser.parse(source: source)
             .flattened()
             .compactMap { $0 as? InheritingSymbol }
 
@@ -89,7 +89,7 @@ class MyProjectVisitor: SymbolParser {
 
         endScopeAndAddSymbol { children in
             MySpecialStruct(
-                name: node.identifier.text,
+                name: node.name.text,
                 children: children,
                 genericWhereClause: genericWhereClause.description
             )
