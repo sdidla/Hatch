@@ -31,7 +31,7 @@ public struct ExampleApp {
 
         """
 
-        let symbols = try SymbolParser.parse(source: source)
+        let symbols = SymbolParser.parse(source: source)
             .flattened()
             .compactMap { $0 as? InheritingSymbol }
 
@@ -51,21 +51,22 @@ public struct ExampleApp {
 
         @StringBuilder var output: String {
             """
+
             let a = 10
 
-            print("for start")
+            print("begin printing symbol names")
             """
 
 
             for t in symbols.map(\.name) {
             """
-                print(\(t))
+            print(\(t))
             """
             }
 
             """
-            print("for done")
-            end
+            print("end printing symbol names")
+
             """
         }
 
@@ -89,7 +90,7 @@ class MyProjectVisitor: SymbolParser {
 
         endScopeAndAddSymbol { children in
             MySpecialStruct(
-                name: node.identifier.text,
+                name: node.name.text,
                 children: children,
                 genericWhereClause: genericWhereClause.description
             )
