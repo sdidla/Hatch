@@ -1,5 +1,5 @@
 import XCTest
-@testable import HatchParser
+@testable import Hatch
 
 final class SymbolVisitorTests: XCTestCase {
 

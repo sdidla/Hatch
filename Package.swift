@@ -9,35 +9,21 @@ let package = Package(
     platforms: [.iOS(.v13), .macOS(.v10_15)],
     products: [
         .executable(name: "HatchExample", targets: ["HatchExample"]),
-        .library(name: "HatchParser", targets: ["HatchParser"]),
-        .library(name: "HatchBuilder", targets: ["HatchBuilder"]),
+        .library(name: "Hatch", targets: ["Hatch"]),
     ],
     dependencies: [
         .package(name: "swift-syntax", url: "https://github.com/apple/swift-syntax.git", from: "509.0.0")
     ],
     targets: [
-        .executableTarget(
-            name: "HatchExample",
-            dependencies: [
-                .target(name: "HatchParser"),
-                .target(name: "HatchBuilder")
-            ]
-        ),
+        .executableTarget(name: "HatchExample", dependencies: [.target(name: "Hatch")]),
         .target(
-            name: "HatchParser",
+            name: "Hatch",
             dependencies: [
                 .product(name: "SwiftSyntax", package: "swift-syntax"),
                 .product(name: "SwiftParser", package: "swift-syntax")
             ]
         ),
-        .target(
-            name: "HatchBuilder"
-        ),
-
-        .testTarget(
-            name: "HatchParserTests",
-            dependencies: ["HatchParser"]
-        )
+        .testTarget(name: "HatchTests", dependencies: ["Hatch"])
     ]
 )
 

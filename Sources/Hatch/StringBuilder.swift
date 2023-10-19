@@ -1,5 +1,27 @@
 import Foundation
 
+/// Provides string concatenation support to make it easier to generate swift code
+///
+/// Example:
+/// ```swift
+/// @StringBuilder var myFile: String {
+///     """
+///     switch symbol {
+///     """
+///
+///     for symbol in symbolNames {
+///     """
+///         case \(symbol)
+///     """
+///     }
+///
+///     """
+///     }
+///     """
+/// }
+///
+/// try myFile.write(toFile: "myFile.swift", atomically: true, encoding: .utf8)
+/// ```
 @resultBuilder public struct StringBuilder {
     static public func buildBlock(_ components: String?...) -> String? {
         return components.compactMap { $0 }.joined(separator: "\n")

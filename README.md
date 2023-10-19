@@ -3,16 +3,20 @@
 
 # Hatch
 
-Generate Swift using Swift.
-
-This package contains two modules:
-- `HatchParser` Provides a simple, extensible parser to to get a hierarchical list of symbols from swift code using [SwiftSyntax](https://github.com/apple/swift-syntax)
-- `HatchBuilder` Provides a string concatenating `resultBuidler` so expressions can be interspersed with strings 
+A simple, extensible parser to to get a hierarchical list of symbols from swift code using [SwiftSyntax](https://github.com/apple/swift-syntax)
 
 ## Documentation
 
-- [`HatchParser`](https://sdidla.github.io/Hatch/docs/HatchParser/documentation/hatchparser/)
-   
+- [Hatch Documentation](https://sdidla.github.io/Hatch/docs/Hatch/documentation/hatch/)
+
+## Usage
+
+When using Swift Package Manager, add the following to your package dependencies in the `Package.swift` file:
+
+```swift
+  .package(url: "https://github.com/sdidla/Hatch.git", from: "<#latest swift-syntax tag#>")
+```
+
 ## Releases
 
 Hatch [releases](https://github.com/sdidla/Hatch/releases/) correspond to releases of [SwiftSyntax](https://github.com/apple/swift-syntax)
@@ -20,7 +24,7 @@ Hatch [releases](https://github.com/sdidla/Hatch/releases/) correspond to releas
 ## Example
 
 ```swift
-import HatchParser
+import Hatch
 
 let source: String = <some swift code>
 let symbols = SymbolParser.parse(source: source)
@@ -55,49 +59,48 @@ Output:
 
 ```
 ▿ 3 elements
-  ▿ HatchParser.Struct
+  ▿ Hatch.Struct
     - name: "A1"
     ▿ children: 3 elements
-      ▿ HatchParser.Struct
+      ▿ Hatch.Struct
         - name: "BC"
         ▿ children: 3 elements
-          ▿ HatchParser.Struct
+          ▿ Hatch.Struct
             - name: "C1"
             - children: 0 elements
             - inheritedTypes: 0 elements
-          ▿ HatchParser.Struct
+          ▿ Hatch.Struct
             - name: "C2"
             - children: 0 elements
             - inheritedTypes: 0 elements
-          ▿ HatchParser.Struct
+          ▿ Hatch.Struct
             - name: "C3"
             - children: 0 elements
             - inheritedTypes: 0 elements
         - inheritedTypes: 0 elements
-      ▿ HatchParser.Struct
+      ▿ Hatch.Struct
         - name: "BD"
         ▿ children: 2 elements
-          ▿ HatchParser.Struct
+          ▿ Hatch.Struct
             - name: "D1"
             - children: 0 elements
             - inheritedTypes: 0 elements
-          ▿ HatchParser.Struct
+          ▿ Hatch.Struct
             - name: "D2"
             - children: 0 elements
             - inheritedTypes: 0 elements
         - inheritedTypes: 0 elements
-      ▿ HatchParser.Struct
+      ▿ Hatch.Struct
         - name: "BX"
         - children: 0 elements
         - inheritedTypes: 0 elements
     - inheritedTypes: 0 elements
-  ▿ HatchParser.Struct
+  ▿ Hatch.Struct
     - name: "A2"
     - children: 0 elements
     - inheritedTypes: 0 elements
-  ▿ HatchParser.Enum
+  ▿ Hatch.Enum
     - name: "MyEnum"
     - children: 0 elements
     - inheritedTypes: 0 elements
-
 ```
