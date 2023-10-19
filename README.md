@@ -5,7 +5,17 @@
 
 A simple, extensible parser to to get a hierarchical list of symbols from swift code using [SwiftSyntax](https://github.com/apple/swift-syntax)
 
-- [Documentation](https://sdidla.github.io/Hatch/docs/Hatch/documentation/hatch/)
+## Documentation
+
+- [Hatch Documentation](https://sdidla.github.io/Hatch/docs/Hatch/documentation/hatch/)
+
+## Usage
+
+When using Swift Package Manager, add the following to your package dependencies in the `Package.swift` file:
+
+```swift
+  .package(url: "https://github.com/sdidla/Hatch.git", from: "<#latest swift-syntax tag#>")
+```
 
 ## Releases
 
