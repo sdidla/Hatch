@@ -1,13 +1,13 @@
-# ``HatchParser``
+# ``Hatch``
 
-HatchParser is a simple, extensible symbol parser based on `SwiftSyntax`
+Hatch is a simple, extensible symbol parser based on `SwiftSyntax`
 
 ## Usage
 
 Extracting symbols from a string or contents of a file using ``SymbolParser/parse(source:)``
 
 ```swift
-import HatchParser
+import Hatch
 
 let path = "~/Repositories/myProject"
 let directoryURL = URL(fileURLWithPath: path)
@@ -22,7 +22,7 @@ let allSymbols = try FileManager.default
 dump(allSymbols)
 ```
 
-You can use swift standard library methods to `filter`, `map`, `compactMap` etc. `HatchParser` provides an additional method on a collection of symbols called ``Symbol/flattened()`` that returns a flat array of symbols derived from the symbol tree while preserving the subtree
+You can use swift standard library methods to `filter`, `map`, `compactMap` etc. `Hatch` provides an additional method on a collection of symbols called ``Symbol/flattened()`` that returns a flat array of symbols derived from the symbol tree while preserving the subtree
 
 For example, to extract all the enum case elements from a specific enum, you can do:
 

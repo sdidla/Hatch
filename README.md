@@ -3,16 +3,10 @@
 
 # Hatch
 
-Generate Swift using Swift.
+A simple, extensible parser to to get a hierarchical list of symbols from swift code using [SwiftSyntax](https://github.com/apple/swift-syntax)
 
-This package contains two modules:
-- `HatchParser` Provides a simple, extensible parser to to get a hierarchical list of symbols from swift code using [SwiftSyntax](https://github.com/apple/swift-syntax)
-- `HatchBuilder` Provides a string concatenating `resultBuidler` so expressions can be interspersed with strings 
+- [Documentation](https://sdidla.github.io/Hatch/docs/Hatch/documentation/hatch/)
 
-## Documentation
-
-- [`HatchParser`](https://sdidla.github.io/Hatch/docs/HatchParser/documentation/hatchparser/)
-   
 ## Releases
 
 Hatch [releases](https://github.com/sdidla/Hatch/releases/) correspond to releases of [SwiftSyntax](https://github.com/apple/swift-syntax)
@@ -20,7 +14,7 @@ Hatch [releases](https://github.com/sdidla/Hatch/releases/) correspond to releas
 ## Example
 
 ```swift
-import HatchParser
+import Hatch
 
 let source: String = <some swift code>
 let symbols = SymbolParser.parse(source: source)

@@ -1,7 +1,6 @@
 import Foundation
-import HatchParser
-import HatchBuilder
 import SwiftSyntax
+import Hatch
 
 @main
 public struct ExampleApp {
