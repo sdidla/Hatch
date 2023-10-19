@@ -31,6 +31,13 @@ public struct Class: Symbol, InheritingSymbol  {
     public let inheritedTypes: [String]
 }
 
+/// A swift actor
+public struct Actor: Symbol, InheritingSymbol  {
+    public let name: String
+    public let children: [Symbol]
+    public let inheritedTypes: [String]
+}
+
 /// A swift struct
 public struct Struct: Symbol, InheritingSymbol  {
     public let name: String

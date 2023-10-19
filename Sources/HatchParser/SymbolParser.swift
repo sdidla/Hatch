@@ -51,6 +51,20 @@ open class SymbolParser: SyntaxVisitor {
             )
         }
     }
+    
+    open override func visit(_ node: ActorDeclSyntax) -> SyntaxVisitorContinueKind {
+        startScope()
+    }
+
+    open override func visitPost(_ node: ActorDeclSyntax) {
+        endScopeAndAddSymbol { children in
+            Actor(
+                name: node.name.text,
+                children: children,
+                inheritedTypes: node.inheritanceClause?.types ?? []
+            )
+        }
+    }
 
     open override func visit(_ node: ProtocolDeclSyntax) -> SyntaxVisitorContinueKind {
         startScope()

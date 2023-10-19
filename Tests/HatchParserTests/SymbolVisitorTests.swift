@@ -271,4 +271,65 @@ final class SymbolVisitorTests: XCTestCase {
         XCTAssertEqual(extensions.first?.name, "String")
         XCTAssertEqual(extensions.first?.inheritedTypes.first, "MyProtocol")
     }
+    
+    func testExtractingActor() throws {
+          let code = """
+          actor MyActor {
+          }
+          """
+
+          let actors = SymbolParser.parse(source: code)
+              .compactMap { $0 as? Actor }
+
+          XCTAssertEqual(actors.count, 1)
+          XCTAssertEqual(actors.first?.name, "MyActor")
+      }
+
+      func testExtractingNestedActor() throws {
+          let code = """
+          enum MyEnum {
+            actor MyNestedActorA {}
+            actor MyNestedActorB {}
+          }
+          """
+
+          let symbols = SymbolParser.parse(source: code)
+              .flattened()
+
+          let actors = symbols
+              .compactMap { $0 as? Actor }
+
+          XCTAssertEqual(symbols.count, 3)
+          XCTAssertEqual(actors.count, 2)
+          XCTAssertEqual(actors[0].name, "MyNestedActorA")
+          XCTAssertEqual(actors[1].name, "MyNestedActorB")
+      }
+
+      func testExtractingGenericActor() throws {
+          let code = """
+          actor MyActor<T> where T: StringProtocol {
+          }
+          """
+
+          let actors = SymbolParser.parse(source: code)
+              .compactMap { $0 as? Actor }
+
+          XCTAssertEqual(actors.count, 1)
+          XCTAssertEqual(actors.first?.name, "MyActor")
+      }
+
+      
+      func testExtractingInheritingActor() throws {
+          let code = """
+          actor MyActor: Error, Sendable {
+          }
+          """
+
+          let actors = SymbolParser.parse(source: code)
+              .compactMap { $0 as? Actor }
+
+          XCTAssertEqual(actors.count, 1)
+          XCTAssertEqual(actors.first?.name, "MyActor")
+          XCTAssertEqual(actors.first?.inheritedTypes, ["Error", "Sendable"])
+      }
 }
