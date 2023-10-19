@@ -31,7 +31,7 @@ jobs:
                     swift package \
                         --allow-writing-to-directory "rendered/docs/Hatch" \
                         generate-documentation \
-                        --target HatchParser \
+                        --target Hatch \
                         --disable-indexing \
                         --transform-for-static-hosting \
                         --hosting-base-path "/Hatch/docs/Hatch/" \
