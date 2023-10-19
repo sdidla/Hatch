@@ -49,49 +49,48 @@ Output:
 
 ```
 ▿ 3 elements
-  ▿ HatchParser.Struct
+  ▿ Hatch.Struct
     - name: "A1"
     ▿ children: 3 elements
-      ▿ HatchParser.Struct
+      ▿ Hatch.Struct
         - name: "BC"
         ▿ children: 3 elements
-          ▿ HatchParser.Struct
+          ▿ Hatch.Struct
             - name: "C1"
             - children: 0 elements
             - inheritedTypes: 0 elements
-          ▿ HatchParser.Struct
+          ▿ Hatch.Struct
             - name: "C2"
             - children: 0 elements
             - inheritedTypes: 0 elements
-          ▿ HatchParser.Struct
+          ▿ Hatch.Struct
             - name: "C3"
             - children: 0 elements
             - inheritedTypes: 0 elements
         - inheritedTypes: 0 elements
-      ▿ HatchParser.Struct
+      ▿ Hatch.Struct
         - name: "BD"
         ▿ children: 2 elements
-          ▿ HatchParser.Struct
+          ▿ Hatch.Struct
             - name: "D1"
             - children: 0 elements
             - inheritedTypes: 0 elements
-          ▿ HatchParser.Struct
+          ▿ Hatch.Struct
             - name: "D2"
             - children: 0 elements
             - inheritedTypes: 0 elements
         - inheritedTypes: 0 elements
-      ▿ HatchParser.Struct
+      ▿ Hatch.Struct
         - name: "BX"
         - children: 0 elements
         - inheritedTypes: 0 elements
     - inheritedTypes: 0 elements
-  ▿ HatchParser.Struct
+  ▿ Hatch.Struct
     - name: "A2"
     - children: 0 elements
     - inheritedTypes: 0 elements
-  ▿ HatchParser.Enum
+  ▿ Hatch.Enum
     - name: "MyEnum"
     - children: 0 elements
     - inheritedTypes: 0 elements
-
 ```
