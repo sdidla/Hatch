@@ -10,13 +10,10 @@ permissions:
 
 jobs:
   default:
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    
     runs-on: macos-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
