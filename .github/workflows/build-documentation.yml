@@ -25,13 +25,13 @@ jobs:
         run: |
           mkdir docs
           swift package \
-            --allow-writing-to-directory "docs/Hatch" \
+            --allow-writing-to-directory "docs" \
             generate-documentation \
             --target Hatch \
             --disable-indexing \
             --transform-for-static-hosting \
-            --hosting-base-path "docs/Hatch/" \
-            --output-path "docs/Hatch"
+            --hosting-base-path "Hatch" \
+            --output-path "docs"
       - name: Upload
         uses: actions/upload-pages-artifact@v2
         with:
