@@ -2,15 +2,14 @@ name: unit-test
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ $default-branch ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ $default-branch ]
   workflow_dispatch:
   
 jobs:
   default:
     runs-on: macos-latest
-
     steps:
     - name: Checkout
       uses: actions/checkout@v3
