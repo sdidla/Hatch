@@ -8,7 +8,7 @@ A simple, extensible parser to to get a hierarchical list of symbols from swift 
 
 ## Documentation
 
-- [Hatch Documentation](https://sdidla.github.io/Hatch/docs/Hatch/documentation/hatch/)
+- [Hatch Documentation](https://sdidla.github.io/Hatch/documentation/hatch/)
 
 ## Usage
 
