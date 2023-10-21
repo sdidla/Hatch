@@ -1,4 +1,4 @@
-name: Unit Tests
+name: unit-test
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  Default:
+  default:
     runs-on: macos-latest
 
     steps:
