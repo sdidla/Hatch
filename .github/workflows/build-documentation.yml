@@ -24,6 +24,7 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Build Documentation
         run: |
+          mkdir docs
           swift package \
             --allow-writing-to-directory "docs/Hatch" \
             generate-documentation \
