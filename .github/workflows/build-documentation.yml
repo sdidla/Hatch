@@ -1,18 +1,16 @@
-# Simple workflow for deploying static content to GitHub Pages
 name: build-documentation
 
 on:
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
 jobs:
-  # Single deploy job since we're just deploying
   default:
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -26,20 +24,18 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Build Documentation
         run: |
-          mkdir -p "rendered/docs/Hatch"
           swift package \
-            --allow-writing-to-directory "rendered/docs/Hatch" \
+            --allow-writing-to-directory "docs/Hatch" \
             generate-documentation \
             --target Hatch \
             --disable-indexing \
             --transform-for-static-hosting \
             --hosting-base-path "/Hatch/docs/Hatch/" \
-            --output-path "rendered/docs/Hatch"
+            --output-path "docs/Hatch"
       - name: Upload
         uses: actions/upload-pages-artifact@v2
         with:
-          # Upload entire repository
-          path: 'rendered/'
+          path: 'docs'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
