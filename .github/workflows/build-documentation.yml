@@ -30,7 +30,7 @@ jobs:
             --target Hatch \
             --disable-indexing \
             --transform-for-static-hosting \
-            --hosting-base-path "/Hatch/docs/Hatch/" \
+            --hosting-base-path "docs/Hatch/" \
             --output-path "docs/Hatch"
       - name: Upload
         uses: actions/upload-pages-artifact@v2
