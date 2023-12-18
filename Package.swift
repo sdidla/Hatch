@@ -32,10 +32,3 @@ let package = Package(
         .testTarget(name: "HatchTests", dependencies: ["Hatch"])
     ]
 )
-
-if ProcessInfo.processInfo.environment["CI"] == "true" {
-    package.dependencies += [
-        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.0.0"),
-    ]
-}
-
