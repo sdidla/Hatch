@@ -6,13 +6,19 @@ import Foundation
 
 let package = Package(
     name: "Hatch",
-    platforms: [.iOS(.v13), .macOS(.v10_15)],
+    platforms: [
+        .macOS(.v10_15),
+        .iOS(.v13),
+        .tvOS(.v13),
+        .watchOS(.v6),
+        .macCatalyst(.v13),
+    ],
     products: [
         .executable(name: "HatchExample", targets: ["HatchExample"]),
         .library(name: "Hatch", targets: ["Hatch"]),
     ],
     dependencies: [
-        .package(name: "swift-syntax", url: "https://github.com/apple/swift-syntax.git", from: "509.0.0")
+        .package(name: "swift-syntax", url: "https://github.com/apple/swift-syntax.git", from: "509.0.2")
     ],
     targets: [
         .executableTarget(name: "HatchExample", dependencies: [.target(name: "Hatch")]),
