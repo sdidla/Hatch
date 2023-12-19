@@ -1,6 +1,5 @@
 [![GitHub license](https://img.shields.io/github/license/sdidla/Hatch)](https://github.com/sdidla/Hatch/blob/main/LICENSE)
 [![Tests](https://github.com/sdidla/Hatch/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/sdidla/Hatch/actions/workflows/unit-tests.yml)
-[![Documentation](https://github.com/sdidla/Hatch/actions/workflows/build-documentation.yml/badge.svg)](https://github.com/sdidla/Hatch/actions/workflows/build-documentation.yml)
 
 # Hatch
 
