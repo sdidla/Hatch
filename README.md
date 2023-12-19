@@ -1,3 +1,5 @@
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fsdidla%2FHatch%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/sdidla/Hatch)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fsdidla%2FHatch%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/sdidla/Hatch)
 [![GitHub license](https://img.shields.io/github/license/sdidla/Hatch)](https://github.com/sdidla/Hatch/blob/main/LICENSE)
 [![Tests](https://github.com/sdidla/Hatch/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/sdidla/Hatch/actions/workflows/unit-tests.yml)
 
@@ -7,7 +9,7 @@ A simple, extensible parser to to get a hierarchical list of symbols from swift 
 
 ## Documentation
 
-- [Hatch Documentation](https://sdidla.github.io/Hatch/documentation/hatch/)
+- [Hatch Documentation]([https://sdidla.github.io/Hatch/documentation/hatch/](https://swiftpackageindex.com/sdidla/Hatch/509.0.2/documentation/hatch))
 
 ## Usage
 
