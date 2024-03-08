@@ -6,6 +6,8 @@ import Hatch
 public struct ExampleApp {
     public static func main() throws {
 
+        // MARK: - Example of parsing a string
+
         let source = """
 
         struct A1 {
@@ -36,6 +38,8 @@ public struct ExampleApp {
 
         dump(symbols)
 
+        // MARK: - Example of parsing from the file system
+
         let path = "~/Repositories/myProject" as NSString
         let directoryURL = URL(fileURLWithPath: path.expandingTildeInPath)
 
@@ -47,6 +51,8 @@ public struct ExampleApp {
             .flatMap { try SymbolParser.parse(source: String(contentsOf: $0)) }
 
         dump(allSymbols)
+
+        // MARK: - Example of StringBuilder
 
         @StringBuilder var output: String {
             """
