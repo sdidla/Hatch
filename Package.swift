@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -18,7 +18,7 @@ let package = Package(
         .library(name: "Hatch", targets: ["Hatch"]),
     ],
     dependencies: [
-        .package(name: "swift-syntax", url: "https://github.com/apple/swift-syntax.git", from: "600.0.0")
+        .package(url: "https://github.com/apple/swift-syntax.git", from: "600.0.0")
     ],
     targets: [
         .executableTarget(name: "HatchExample", dependencies: [.target(name: "Hatch")]),
