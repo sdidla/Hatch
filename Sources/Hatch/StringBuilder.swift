@@ -22,7 +22,7 @@ import Foundation
 ///
 /// try myFile.write(toFile: "myFile.swift", atomically: true, encoding: .utf8)
 /// ```
-@resultBuilder public struct StringBuilder {
+@resultBuilder public struct StringBuilder: Sendable {
     static public func buildBlock(_ components: String?...) -> String? {
         return components.compactMap { $0 }.joined(separator: "\n")
     }

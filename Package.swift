@@ -18,7 +18,7 @@ let package = Package(
         .library(name: "Hatch", targets: ["Hatch"]),
     ],
     dependencies: [
-        .package(name: "swift-syntax", url: "https://github.com/apple/swift-syntax.git", from: "510.0.0")
+        .package(name: "swift-syntax", url: "https://github.com/apple/swift-syntax.git", from: "600.0.0")
     ],
     targets: [
         .executableTarget(name: "HatchExample", dependencies: [.target(name: "Hatch")]),
