@@ -16,7 +16,7 @@ A simple, extensible parser to to get a hierarchical list of symbols from swift 
 When using Swift Package Manager, add the following to your package dependencies in the `Package.swift` file:
 
 ```swift
-  .package(url: "https://github.com/sdidla/Hatch.git", from: "601.0.1")
+  .package(url: "https://github.com/sdidla/Hatch.git", from: "602.0.1")
 ```
 
 ## Releases
