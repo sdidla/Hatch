@@ -8,12 +8,25 @@ let package = Package(
     platforms: [.iOS(.v18), .macOS(.v15)],
     products: [
         .library(name: "NotificationCenter", targets: ["NotificationCenter"]),
+        .library(name: "NotificationCodeGen", targets: ["NotificationCodeGen"])
+    ],
+    dependencies: [
+        .package(url: "https://github.com/JohnSundell/Splash", from: "0.16.0"),
+        .package(path: "..") // Hatch
+            
     ],
     targets: [
+        .target(name: "NotificationCenter"),
+        
+        .executableTarget(
+            name: "NotificationCodeGenCLI",
+            dependencies: ["NotificationCodeGen"]
+        ),
         .target(
-            name: "NotificationCenter",
-            swiftSettings: [
-                .enableUpcomingFeature("ApproachableConcurrency"),
+            name: "NotificationCodeGen",
+            dependencies: [
+                .product(name: "Splash", package: "Splash"),
+                .product(name: "Hatch", package: "Hatch")
             ],
         ),
     ],
