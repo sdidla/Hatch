@@ -32,7 +32,7 @@ public func createNotificationListViewFile() throws {
                         .fontWeight(.heavy)
                         .padding(.bottom)
     
-                switch item {
+                    switch item {
     """#
 
     for modelName in modelNames {

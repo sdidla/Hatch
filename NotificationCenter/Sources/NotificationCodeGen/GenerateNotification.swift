@@ -1,20 +1,18 @@
 import Foundation
-import Hatch
 
-public func createNotificationFile(_ notificationName: String) throws {
-    let fileName = notificationName + "Notification.swift"
+public func createNotificationFile(_ modelName: String) throws {
+    let fileName = modelName + ".swift"
     let fileURL = projectURL
         .appendingPathComponent("NotificationTypes")
         .appendingPathComponent(fileName)
     
-    let contents = code(notificationName)
+    let contents = code(modelName)
     try contents.write(to: fileURL, atomically: true, encoding: .utf8)
     print("Created \(fileURL.path())")
 }
 
-private func code(_ name: String) -> String {
-    let modelName = name + "Notification"
-    let viewName = name + "NotificationView"
+private func code(_ modelName: String) -> String {
+    let viewName = modelName + "View"
 
     return """
     import SwiftUI
@@ -46,5 +44,5 @@ private func code(_ name: String) -> String {
 import SwiftUI
 
 #Preview {
-    CodeView(code("ProfileVisit"))
+    CodeView(code("ProfileVisitNotification"))
 }
