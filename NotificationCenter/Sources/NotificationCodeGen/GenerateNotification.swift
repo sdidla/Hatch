@@ -44,5 +44,5 @@ private func code(_ modelName: String) -> String {
 import SwiftUI
 
 #Preview {
-    CodeView(code("ProfileVisitNotification"))
+    CodeView(code("SampleNotification"))
 }
