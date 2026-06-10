@@ -1,5 +1,5 @@
-@preconcurrency import Splash
 import SwiftUI
+@preconcurrency import Splash
 
 private let fontPath = "/System/Library/Fonts/Menlo.ttc"
 private let font = Splash.Font(path: fontPath, size: 15)
@@ -15,24 +15,11 @@ struct CodeView: View {
     }
     
     var body: some View {
-        ScrollView {
+        ScrollView([.vertical, .horizontal]) {
             Text(AttributedString(highlighter.highlight(code)))
-                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding()
         }
-        .frame(width: 500, height: 300)
+        .defaultScrollAnchor(.topLeading)
         .background(Color(theme.backgroundColor.cgColor))
     }
-    
-}
-#Preview {
-    CodeView(
-        """
-        print("Hello World")
-        
-        let path = "\(projectURL)"
-        
-        \(projectSymbols?.description ?? "")
-        """
-    )
 }

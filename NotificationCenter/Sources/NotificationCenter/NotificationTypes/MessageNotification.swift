@@ -2,7 +2,6 @@ import SwiftUI
 
 struct MessageNotification: Notification {
     let id = UUID()
-    let type = NotificationType.message
     let name: String
     let preview: String
     let message: String

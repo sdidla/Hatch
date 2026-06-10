@@ -2,7 +2,6 @@ import SwiftUI
 
 struct BirthdayNotification: Notification {
     let id = UUID()
-    let type = NotificationType.birthday
     let personName: String
     let date: Date
 }
